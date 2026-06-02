@@ -4,8 +4,8 @@ LOCAL_PATH=$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 all:	test
 
-test:	test.c
-	zcc +pc6001 -Wall --generic-console -subtype=rom -otest -create-app test.c
+test:	test.c semigraphics.c semigraphics.h
+	zcc +pc6001 -Wall --generic-console -subtype=rom -otest -create-app test.c semigraphics.c
 
 clean:
 	rm -rf test*.bin test
