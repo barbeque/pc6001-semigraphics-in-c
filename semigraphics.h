@@ -20,8 +20,8 @@ Flags for semigraphics characters
 enum sg_char {
     // Top 2 bits decide which of the four colours you want
     COLOUR_0 = 0x00,
-    COLOUR_1 = 0x80,
-    COLOUR_2 = 0x40,
+    COLOUR_1 = 0x40,
+    COLOUR_2 = 0x80,
     COLOUR_3 = 0xC0,
     // Bottom six bits decide which pixels are lit
     TOP_LEFT = 0x20,
@@ -57,5 +57,10 @@ void sg_setpalette(unsigned char x, unsigned char y, BOOL second_palette);
 Set the status of a character on the screen.
 */
 void sg_setchar(unsigned char x, unsigned char y, enum sg_char c);
+
+/**
+Fill an area of character tiles
+*/
+void sg_fillchars(unsigned char x, unsigned char y, unsigned char width, unsigned char height, enum sg_char c, BOOL second_palette);
 
 #endif

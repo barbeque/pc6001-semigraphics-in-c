@@ -29,3 +29,16 @@ void sg_setpalette(unsigned char x, unsigned char y, BOOL second_palette) {
 void sg_setchar(unsigned char x, unsigned char y, enum sg_char c) {
     tiles[y * SG_TILES_WIDTH + x] = c;
 }
+
+void sg_fillchars(unsigned char x, unsigned char y, unsigned char width, unsigned char height, enum sg_char c, BOOL second_palette) {
+    // FIXME: something is wrong here, i'm running into user memory...
+    for(unsigned short j = y; j < y + height; ++j) {
+        unsigned short row = j * SG_TILES_WIDTH;
+
+        for(unsigned short i = x; i < x + width; ++i) {
+            tiles[row + i] = c;
+            // for now, also set palette
+            attributes[row + i] = second_palette ? 0x62 : 0x60;
+        }
+    }
+}
