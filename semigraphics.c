@@ -42,3 +42,11 @@ void sg_fillchars(unsigned char x, unsigned char y, unsigned char width, unsigne
         }
     }
 }
+
+enum sg_char sg_peekchar(unsigned char x, unsigned char y) {
+    return tiles[y * SG_TILES_WIDTH + x];
+}
+
+BOOL sg_peekpalette(unsigned char x, unsigned char y) {
+    return attributes[y * SG_TILES_WIDTH + x] == 0x62;
+}

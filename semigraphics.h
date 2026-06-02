@@ -63,4 +63,14 @@ Fill an area of character tiles
 */
 void sg_fillchars(unsigned char x, unsigned char y, unsigned char width, unsigned char height, enum sg_char c, BOOL second_palette);
 
+/**
+Get the character that is at the given location
+*/
+enum sg_char sg_peekchar(unsigned char x, unsigned char y);
+
+/**
+Get the palette attribute used at the given location
+*/
+BOOL sg_peekpalette(unsigned char x, unsigned char y);
+
 #endif
