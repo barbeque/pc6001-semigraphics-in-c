@@ -1,0 +1,4 @@
+ - [ ] get an SMPTE colour bars demo
+ - [ ] setpixel (decide which sub-pixel of the tile is set)
+ - [ ] blit operation
+ - [ ] xor animation support of some kind? "sprites"
