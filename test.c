@@ -2,6 +2,7 @@
 #include "semigraphics.h"
 
 const unsigned short* KEYPRESS_ENABLE = 0xfa2d;
+unsigned short palette = 0;
 
 int main() {
     // Disable keyclick sound
@@ -10,7 +11,6 @@ int main() {
     sg_init();
 
     while(1) {
-
     }
 
     return 0;

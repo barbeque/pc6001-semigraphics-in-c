@@ -3,11 +3,11 @@
 
 // TODO: Confirm these addresses
 unsigned char* attributes = 0xc000;
-unsigned char* tiles = attributes + 512;
+unsigned char* tiles = 0xc200; // attributes plus 512 bytes
 
 void sg_init() {
     // Clear memory
-    sg_clear(0x00);
+    sg_clear(SOLID);
 }
 
 void sg_clear(enum sg_char fill) {
@@ -26,6 +26,6 @@ void sg_setpalette(unsigned char x, unsigned char y, BOOL second_palette) {
     attributes[y * SG_TILES_WIDTH + x] = second_palette ? 0x62 : 0x60;
 }
 
-void sg_setchar(unsigned char x, unsigned char y, enum sg_char char) {
-    tiles[y * SG_TILES_WIDTH + x] = char;
+void sg_setchar(unsigned char x, unsigned char y, enum sg_char c) {
+    tiles[y * SG_TILES_WIDTH + x] = c;
 }
