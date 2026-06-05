@@ -29,19 +29,19 @@ void sg_setchar(unsigned char x, unsigned char y, enum sg_char c) {
     tiles[y * SG_TILES_WIDTH + x] = c;
 }
 
+// Table to get the bit shift for a specific bit of the tile
+const unsigned char bitShifts[3][2] = {
+    // Y % 3 == 0 (0, 3, 6, etc.)
+    { 5, 4 }, // top left, top right
+    // Y % 3 == 1 (1, 4, 7, etc.)
+    { 3, 2 }, // middle left, middle right
+    // Y % 3 == 2 (2, 5, 8, etc.)
+    { 1, 0 } // lower left, lower right
+};
+
 void sg_setpixel(unsigned char x, unsigned char y, BOOL value) {
     // TODO: Table to identify specific pixel (x/2, y/3) likely faster than this
     unsigned short tileIdx = (y/3) * SG_TILES_WIDTH + (x/2);
-    
-    // Table to get the bit shift for a specific bit of the tile
-    const unsigned char bitShifts[3][2] = {
-        // Y % 3 == 0 (0, 3, 6, etc.)
-        { 5, 4 }, // top left, top right
-        // Y % 3 == 1 (1, 4, 7, etc.)
-        { 3, 2 }, // middle left, middle right
-        // Y % 3 == 2 (2, 5, 8, etc.)
-        { 1, 0 } // lower left, lower right
-    };
 
     unsigned char c = tiles[tileIdx];
     unsigned char shift = bitShifts[y % 3][x % 2];
