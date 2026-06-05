@@ -1,5 +1,6 @@
  - [x] get an SMPTE colour bars demo
  - [x] fast animation demo (move a red rect around)
- - [ ] setpixel (decide which sub-pixel of the tile is set)
+ - [ ] figure out the perpetual bug with running off the end
+ - [x] setpixel (decide which sub-pixel of the tile is set)
  - [ ] blit operation
  - [ ] xor animation support of some kind? "sprites"

@@ -30,22 +30,29 @@ void sg_setchar(unsigned char x, unsigned char y, enum sg_char c) {
 }
 
 void sg_setpixel(unsigned char x, unsigned char y, BOOL value) {
-    // TODO: Table to identify specific pixel (x/2, y/3)
+    // TODO: Table to identify specific pixel (x/2, y/3) likely faster than this
     unsigned short tileIdx = (y/3) * SG_TILES_WIDTH + (x/2);
-    // TODO: Table to get the bitmask for a specific bit of the tile
     
-    const unsigned char bitMask[3][2] = {
+    // Table to get the bit shift for a specific bit of the tile
+    const unsigned char bitShifts[3][2] = {
         // Y % 3 == 0 (0, 3, 6, etc.)
-        { TOP_LEFT, TOP_RIGHT },
+        { 5, 4 }, // top left, top right
         // Y % 3 == 1 (1, 4, 7, etc.)
-        { MIDDLE_LEFT, MIDDLE_RIGHT },
+        { 3, 2 }, // middle left, middle right
         // Y % 3 == 2 (2, 5, 8, etc.)
-        { BOTTOM_LEFT, BOTTOM_RIGHT }
+        { 1, 0 } // lower left, lower right
     };
+
     unsigned char c = tiles[tileIdx];
-    unsigned char mask = bitMask[y][x];
+    unsigned char shift = bitShifts[y % 3][x % 2];
     
-    // Flip only the bits in the mask
+    // Flip only the bit
+    if(value) {
+        tiles[tileIdx] |= (1 << shift);
+    }
+    else {
+        tiles[tileIdx] &= ~(1 << shift);
+    }
 }
 
 void sg_fillchars(unsigned char x, unsigned char y, unsigned char width, unsigned char height, enum sg_char c, BOOL second_palette) {
