@@ -54,9 +54,14 @@ If true, it will use the $62 palette (White/Buff, Cyan, Magenta, Orange)
 void sg_setpalette(unsigned char x, unsigned char y, BOOL second_palette);
 
 /**
-Set the status of a character on the screen.
+Set all the pixels of a character (32x12) on the screen.
 */
 void sg_setchar(unsigned char x, unsigned char y, enum sg_char c);
+
+/**
+Set the individual pixel value of a pixel (64x48)
+*/
+void sg_setpixel(unsigned char x, unsigned char y, BOOL value);
 
 /**
 Fill an area of character tiles

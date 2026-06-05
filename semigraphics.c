@@ -29,6 +29,25 @@ void sg_setchar(unsigned char x, unsigned char y, enum sg_char c) {
     tiles[y * SG_TILES_WIDTH + x] = c;
 }
 
+void sg_setpixel(unsigned char x, unsigned char y, BOOL value) {
+    // TODO: Table to identify specific pixel (x/2, y/3)
+    unsigned short tileIdx = (y/3) * SG_TILES_WIDTH + (x/2);
+    // TODO: Table to get the bitmask for a specific bit of the tile
+    
+    const unsigned char bitMask[3][2] = {
+        // Y % 3 == 0 (0, 3, 6, etc.)
+        { TOP_LEFT, TOP_RIGHT },
+        // Y % 3 == 1 (1, 4, 7, etc.)
+        { MIDDLE_LEFT, MIDDLE_RIGHT },
+        // Y % 3 == 2 (2, 5, 8, etc.)
+        { BOTTOM_LEFT, BOTTOM_RIGHT }
+    };
+    unsigned char c = tiles[tileIdx];
+    unsigned char mask = bitMask[y][x];
+    
+    // Flip only the bits in the mask
+}
+
 void sg_fillchars(unsigned char x, unsigned char y, unsigned char width, unsigned char height, enum sg_char c, BOOL second_palette) {
     // FIXME: something is wrong here, i'm running into user memory...
     for(unsigned short j = y; j < y + height; ++j) {
