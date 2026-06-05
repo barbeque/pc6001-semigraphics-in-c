@@ -11,4 +11,4 @@ clean:
 	rm -rf test*.bin test
 
 run: test
-	cd $(MAME_DIR) && $(MAME) pc6001 $(mame_args) -cart1 $(LOCAL_PATH)/test.bin
+	cd $(MAME_DIR) && $(MAME) pc6001 $(mame_args) -cart1 $(LOCAL_PATH)/test.bin -aviwrite semigraphics.avi

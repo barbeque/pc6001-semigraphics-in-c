@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "semigraphics.h"
 
-// TODO: Confirm these addresses
 unsigned char* attributes = 0xc000;
 unsigned char* tiles = 0xc200; // attributes plus 512 bytes
 
