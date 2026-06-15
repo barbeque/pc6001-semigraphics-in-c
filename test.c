@@ -31,12 +31,7 @@ void demo_moving_rect() {
     // draw the colour bars so we have something to corrupt
     demo_colour_bars();
 
-    // now step through them all and tweak a single pixel
-    for(unsigned short y = 0; y < 48; y += 2) {
-        for(unsigned short x = 0; x < 64; ++x) {
-            sg_setpixel(x, y, 0);
-        }
-    }
+    // something is weird with the extents... let's do some math
 }
 
 int main() {
