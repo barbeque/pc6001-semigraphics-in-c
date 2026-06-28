@@ -16,7 +16,7 @@ void demo_set_tiles() {
     // Now do some colour cycling
     for(unsigned short y = 0; y < SG_TILES_HEIGHT; ++y) {
         for(unsigned short x = 0; x < SG_TILES_WIDTH; ++x) {
-            sg_setpalette(x, y, TRUE);
+            sg_setpalette(x, y, x == 0 || x == 31 || y == 0 || y == 15);
         }
     }
 
