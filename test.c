@@ -4,6 +4,29 @@
 const unsigned short* KEYPRESS_ENABLE = 0xfa2d;
 
 /**
+Just set some tiles, in the slowest way imaginable
+*/
+void demo_set_tiles() {
+    for(unsigned short y = 0; y < SG_TILES_HEIGHT; ++y) {
+        for(unsigned short x = 0; x < SG_TILES_WIDTH; ++x) {
+            sg_setchar(x, y, SOLID | COLOUR_3);
+        }
+    }    
+
+    // Now do some colour cycling
+    for(unsigned short y = 0; y < SG_TILES_HEIGHT; ++y) {
+        for(unsigned short x = 0; x < SG_TILES_WIDTH; ++x) {
+            sg_setpalette(x, y, TRUE);
+        }
+    }
+
+    // the crashing and looping seems to be MAME specific? VX doesn't do that.
+
+    // interesting corruption happens from this, what is going on? It does it on VX also.
+    // seems related to setting the second palette, but how?
+}
+
+/**
 Draw some SMPTE colour bars, or at least as
 close as we can get
 */
@@ -40,7 +63,9 @@ int main() {
 
     sg_init();
     
-    demo_moving_rect();
+    //demo_moving_rect();
+
+    demo_set_tiles();
 
     return 0;
 }

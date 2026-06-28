@@ -1,8 +1,8 @@
 #include "defines.h"
 #include "semigraphics.h"
 
-unsigned char* attributes = 0xc000;
-unsigned char* tiles = 0xc200; // attributes plus 512 bytes
+unsigned char* attributes = 0xc000; // 512 bytes of per-tile attributes
+unsigned char* tiles = 0xc200; // location of attributes, plus 512 bytes
 
 void sg_init() {
     // Clear memory
@@ -15,7 +15,7 @@ void sg_clear(enum sg_char fill) {
         attributes[i] = 0x60;
     }
 
-    // Reset contents of screen RAM
+    // Reset contents of screen RAM (32x16 chars = 512 tiles)
     for(unsigned int i = 0; i < SG_TILES_WIDTH * SG_TILES_HEIGHT; ++i) {
         tiles[i] = fill;
     }
